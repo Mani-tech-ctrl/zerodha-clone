@@ -8,7 +8,7 @@ const { HoldingsModel } = require("./model/HoldingsModel");
 const { PositionModel } = require("./model/PositionsModel");
 const OrdersModel = require("./model/OrdersModel");
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT;
 const url = process.env.MONGO_URL;
 
 
@@ -187,6 +187,11 @@ app.use(bodyParser.json());
 //   });
 //   res.send("Done positons!");
 // })
+
+app.get("/", (req,res)=>{
+  res.send("Backend running");
+});
+
 
 //creating end point
 app.get("/allHoldings", async(req, res) => {
