@@ -8,7 +8,7 @@ const { HoldingsModel } = require("./model/HoldingsModel");
 const { PositionModel } = require("./model/PositionsModel");
 const OrdersModel = require("./model/OrdersModel");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 
 
@@ -223,14 +223,15 @@ app.post("/newOrder", async(req, res)=>{
 })
 
 
-mongoose.connect(url).then(()=>{
-   console.log("DB Started");
+mongoose.connect(url)
+.then(() => {
+  console.log("DB Started");
 
-   app.listen(PORT, () => {
-  console.log("App Started!" + PORT);
-  
-});
+  app.listen(PORT, () => {
+    console.log("App Started " + PORT);
+  });
+})
+.catch(err => console.log("Mongo Error:", err));
 
-});
   
 
