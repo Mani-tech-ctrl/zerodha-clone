@@ -11,7 +11,7 @@ const Holdings = () => {
 
   useEffect(()=>{
     // creating for all holdings
-    axios.get("http://localhost:3002/allHoldings").then((res)=>{
+    axios.get("https://zerodha-clone-41jg.onrender.com/allHoldings").then((res)=>{
       console.log(res.data);
       setAllHoldings(res.data);
     })

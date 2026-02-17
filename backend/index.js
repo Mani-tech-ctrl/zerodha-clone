@@ -212,8 +212,15 @@ app.post("/newOrder", async(req, res)=>{
    res.send("Order Saved!");
 })
 
-app.listen(PORT, () => {
-  console.log("App Started!");
-  mongoose.connect(url);
-  console.log("DB Started");
+
+mongoose.connect(url).then(()=>{
+   console.log("DB Started");
+
+   app.listen(PORT, () => {
+  console.log("App Started!" + PORT);
+  
 });
+
+});
+  
+
